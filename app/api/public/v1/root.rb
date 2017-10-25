@@ -8,6 +8,8 @@ module API
         version 'v1', using: :path
         format :json
 
+        helpers API::Helpers::Common
+
         mount API::Public::V1::Auth
         mount API::Public::V1::Locations
         mount API::Public::V1::TargetGroups

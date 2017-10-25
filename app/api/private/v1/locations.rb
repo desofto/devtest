@@ -8,6 +8,7 @@ module API
           desc 'Methods related to particular location'
           route_param :country_code do
             get do
+              LocationsService.new(country_code: declared_params.country_code).run
             end
           end
         end

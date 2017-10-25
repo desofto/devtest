@@ -8,6 +8,7 @@ module API
           desc 'Methods related to particular target group'
           route_param :country_code do
             get do
+              TargetGroupsService.new(country_code: declared_params.country_code).run
             end
           end
         end
