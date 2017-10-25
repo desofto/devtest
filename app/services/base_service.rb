@@ -16,7 +16,7 @@ class BaseService
 
   private
 
-  class < self
+  class << self
     def should_be_provided(*vars)
       @should_be_provided ||= []
       @should_be_provided += vars
@@ -25,7 +25,7 @@ class BaseService
 
   def validate_provided_vars!
     self.class.instance_variable_get('@should_be_provided').each do |name|
-      next if instance_variables.include? name.to_sym
+      next if instance_variables.include? "@#{name}".to_sym
 
       raise ArgumentError, "#{name} was not provided"
     end
